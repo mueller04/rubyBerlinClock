@@ -3,38 +3,47 @@ require 'test/unit'
 
 class ClockTest < Test::Unit::TestCase
 
+  def setup
+    @clock = Clock.new
+  end
+
   def test_OOOO_returned_for_0_minutes
-      clock = Clock.new
-      clock.set_time(0,0,0)
-      result = clock.calculate_time
+      @clock.set_time(0,0,0)
+
+      result = @clock.calculate_time
+
       assert_equal("OOOO", result.single_minute_row)
   end
 
   def test_YOOO_returned_for_1_minutes
-      clock = Clock.new
-      clock.set_time(0,1,0)
-      result = clock.calculate_time
+      @clock.set_time(0,1,0)
+
+      result = @clock.calculate_time
+
       assert_equal("YOOO", result.single_minute_row)
   end
 
   def test_YYYO_returned_for_3_minutes
-      clock = Clock.new
-      clock.set_time(0,3,0)
-      result = clock.calculate_time
+      @clock.set_time(0,3,0)
+
+      result = @clock.calculate_time
+
       assert_equal("YYYO", result.single_minute_row)
   end
 
   def test_YYYY_returned_for_4_minutes
-      clock = Clock.new
-      clock.set_time(0,4,0)
-      result = clock.calculate_time
+      @clock.set_time(0,4,0)
+
+      result = @clock.calculate_time
+
       assert_equal("YYYY", result.single_minute_row)
   end
 
   def test_fiveminuterow_OOOOOOOOOOO_returned_for_0_minutes
-    clock = Clock.new
-    clock.set_time(0,0,0)
-    result = clock.calculate_time
+    @clock.set_time(0,0,0)
+
+    result = @clock.calculate_time
+
     assert_equal("OOOOOOOOOOO", result.five_minute_row)
   end
 
