@@ -17,6 +17,13 @@ class ClockTest < Test::Unit::TestCase
       assert_equal("YOOO", result)
   end
 
+  def test_YYYO_returned_for_3_minutes
+      clock = Clock.new
+      clock.set_time(0,3,0)
+      result = clock.calculate_time
+      assert_equal("YYYO", result)
+  end
+
 
 
 end
