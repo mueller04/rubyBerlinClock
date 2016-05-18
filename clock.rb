@@ -1,3 +1,5 @@
+require_relative 'clock_lamps'
+
 class Clock
 
   def set_time(hour, minute, second)
@@ -7,15 +9,19 @@ class Clock
   end
 
   def calculate_time
-    minutes_row = ""
+    single_minute_row = ""
       @minute.times do
-        minutes_row += "Y"
+        single_minute_row += "Y"
       end
 
-      until minutes_row.length == 4 do
-        minutes_row += "O"
+      until single_minute_row.length == 4 do
+        single_minute_row += "O"
       end
-    return minutes_row
+
+    five_minute_row = "OOOOOOOOOOO"
+    clock_lamps = ClockLamps.new(single_minute_row, five_minute_row)
+    return clock_lamps
+
   end
 
 
