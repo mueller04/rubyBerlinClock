@@ -35,4 +35,18 @@ class FiveHourTest < Test::Unit::TestCase
     assert_equal("Y", result[:second])
   end
 
+  def test_1_seconds_returns_O
+
+    result = @clock.convert_to_berlin_clock(0,0,1)
+
+    assert_equal("O", result[:second])
+  end
+
+  def test_2_seconds_returns_Y
+
+    result = @clock.convert_to_berlin_clock(0,0,2)
+
+    assert_equal("Y", result[:second])
+  end
+
 end

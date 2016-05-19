@@ -11,7 +11,7 @@ class Clock
         single_hour: [RED_LIGHTS, get_single_lights_on(hour)],
         five_minute: [MIXED_LIGHTS, get_five_lights_on(minute)],
         five_hour: [RED_LIGHTS, get_five_lights_on(hour)],
-        second: [YELLOW_LIGHT, 1]}
+        second: [YELLOW_LIGHT, second % 2 == 0 ? 1 : 0]}
 
       berlin_clock_lamps = {}
       light_row_collection.each do |time_unit, time_values|
@@ -31,6 +31,8 @@ private
   def get_five_lights_on(unit)
       unit / 5
   end
+
+
 
   def get_lights_for_row(light_pattern, number_lights)
       return switch_lights_on(light_pattern, number_lights)+ pad_lights_right(light_pattern, number_lights)
