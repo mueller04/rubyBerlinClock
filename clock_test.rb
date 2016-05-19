@@ -56,12 +56,20 @@ class ClockTest < Test::Unit::TestCase
     assert_equal("OOOOOOOOOOO", result.five_minute_row)
   end
 
-  def test_fiveminuterow_OOOOOOOOOOO_returns_for_0_minutes
+  def test_fiveminuterow_YYOOOOOOOOO_returns_for_12_minutes
     @clock.set_time(0,12,0)
 
     result = @clock.calculate_time
 
     assert_equal("YYOOOOOOOOO", result.five_minute_row)
+  end
+
+  def test_fiveminuterow_YYROOOOOOOO_returns_for_16_minutes
+    @clock.set_time(0,16,0)
+
+    result = @clock.calculate_time
+
+    assert_equal("YYROOOOOOOO", result.five_minute_row)
   end
 
 

@@ -24,8 +24,13 @@ class Clock
           single_minute_lights += "O"
       end
 
-      five_minute_lights = ("Y" * five_minute_row)
-
+      for num in 1...five_minute_row + 1
+          if num % 3 == 0
+            five_minute_lights += "R"
+          else
+            five_minute_lights += "Y"
+          end
+      end
 
     while five_minute_lights.length < 11
         five_minute_lights += "O"
