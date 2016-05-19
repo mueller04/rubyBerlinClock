@@ -26,17 +26,16 @@ class Clock
       single_minute_lights = get_lights_for_row(YELLOW_LIGHTS, single_minute_row, FOUR_LIGHT_ROW)
       single_hour_lights = get_lights_for_row(RED_LIGHTS, single_hour_row, FOUR_LIGHT_ROW)
       five_minute_lights = get_lights_for_row(MIXED_LIGHTS, five_minute_row, ELEVEN_LIGHT_ROW)
+      five_hour_lights = get_lights_for_row(RED_LIGHTS, five_hour_row, FOUR_LIGHT_ROW)
 
 
       # p "foo2 #{five_hour_row}"
       # p "foo2 #{five_hour_row}"
 
-      five_hour_lights = ''
-      # five_hour_lights = switch_lights_on(RED_LIGHTS, five_hour_row)
+
       # STDOUT.flush
       # p "foo2 #{five_hour_row}"
       # p "foo2 #{five_hour_row}"
-      # five_hour_lights += pad_lights_right(FOUR_LIGHT_ROW, five_hour_row)
 
       clock_lamps = ClockLamps.new(single_minute_lights,
       five_minute_lights,
