@@ -1,5 +1,7 @@
 require 'rake/testtask'
 task :default => [:test]
 task :test do
-  ruby'clock_test.rb'
+  ruby'single_minute_test.rb'
+  ruby'five_minute_test.rb'
+  ruby'single_hour_test.rb'
 end
