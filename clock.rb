@@ -8,26 +8,15 @@ class Clock
 
   def convert_to_berlin_clock(hour, minute, second)
 
-      single_minute_row = minute % 5
-      five_minute_row = minute / 5
-      single_hour_row = hour
-      five_hour_row = hour / 5
-      # p
-      # p "foo #{five_hour_row}"
+      single_minute_lights_on = minute % 5
+      single_hour_lights_on = hour % 5
+      five_minute_lights_on = minute / 5
+      five_hour_lights_on = hour / 5
 
-      single_minute_lights = get_lights_for_row(YELLOW_LIGHTS, single_minute_row)
-      single_hour_lights = get_lights_for_row(RED_LIGHTS, single_hour_row)
-      five_minute_lights = get_lights_for_row(MIXED_LIGHTS, five_minute_row)
-      five_hour_lights = get_lights_for_row(RED_LIGHTS, five_hour_row)
-
-
-      # p "foo2 #{five_hour_row}"
-      # p "foo2 #{five_hour_row}"
-
-
-      # STDOUT.flush
-      # p "foo2 #{five_hour_row}"
-      # p "foo2 #{five_hour_row}"
+      single_minute_lights = get_lights_for_row(YELLOW_LIGHTS, single_minute_lights_on)
+      single_hour_lights = get_lights_for_row(RED_LIGHTS, single_hour_lights_on)
+      five_minute_lights = get_lights_for_row(MIXED_LIGHTS, five_minute_lights_on)
+      five_hour_lights = get_lights_for_row(RED_LIGHTS, five_hour_lights_on)
 
       clock_lamps = ClockLamps.new(single_minute_lights,
       five_minute_lights,
@@ -48,10 +37,7 @@ private
   end
 
   def pad_lights_right(light_pattern, current_length)
-    # p "desired length = #{desired_length} minus #{current_length}"
-
       length_to_pad = light_pattern.length - current_length
-      # p length_to_pad
       "O" * length_to_pad
   end
 

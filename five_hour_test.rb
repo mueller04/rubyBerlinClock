@@ -14,12 +14,11 @@ class FiveHourTest < Test::Unit::TestCase
     assert_equal("OOOO", result.five_hour_row)
   end
 
-  # def test_ROOO_returns_for_1_hours
-  #   @clock.set_time(5,0,0)
-  #
-  #   result = @clock.calculate_time
-  #
-  #   assert_equal("ROOO", result.five_hour_row)
-  # end
+  def test_ROOO_returns_for_5_hours
+
+    result = @clock.convert_to_berlin_clock(5,0,0)
+
+    assert_equal("ROOO", result.five_hour_row)
+  end
 
 end
