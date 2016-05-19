@@ -8,18 +8,12 @@ class Clock
   RED_LIGHTS = "RRRR"
   MIXED_LIGHTS = "YYRYYRYYRYY"
 
-  def set_time(hour, minute, second)
-    @hour = hour
-    @minute = minute
-    @second = second
-  end
+  def convert_to_berlin_clock(hour, minute, second)
 
-  def calculate_time
-
-      single_minute_row = @minute % 5
-      five_minute_row = @minute / 5
-      single_hour_row = @hour
-      five_hour_row = @hour / 5
+      single_minute_row = minute % 5
+      five_minute_row = minute / 5
+      single_hour_row = hour
+      five_hour_row = hour / 5
       # p
       # p "foo #{five_hour_row}"
 
