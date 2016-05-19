@@ -1,5 +1,3 @@
-require_relative 'clock_lamps'
-
 class Clock
 
   YELLOW_LIGHTS = "YYYY"
@@ -8,21 +6,17 @@ class Clock
 
   def convert_to_berlin_clock(hour, minute, second)
 
-      single_minute_lights_on = get_single_lights_on(minute)
-      single_hour_lights_on = get_single_lights_on(hour)
-      five_minute_lights_on = get_five_lights_on(minute)
-      five_hour_lights_on = get_five_lights_on(hour)
+      light_row_collection = {single_minute: [YELLOW_LIGHTS, get_single_lights_on(minute)],
+        single_hour: [RED_LIGHTS, get_single_lights_on(hour)],
+        five_minute: [MIXED_LIGHTS, get_five_lights_on(minute)],
+        five_hour: [RED_LIGHTS, get_five_lights_on(hour)]}
 
-      single_minute_lights = get_lights_for_row(YELLOW_LIGHTS, single_minute_lights_on)
-      single_hour_lights = get_lights_for_row(RED_LIGHTS, single_hour_lights_on)
-      five_minute_lights = get_lights_for_row(MIXED_LIGHTS, five_minute_lights_on)
-      five_hour_lights = get_lights_for_row(RED_LIGHTS, five_hour_lights_on)
+      berlin_clock_lamps = {}
+      light_row_collection.each do |time_unit, time_values|
+          berlin_clock_lamps[time_unit] = get_lights_for_row(time_values[0], time_values[1])
+      end
 
-      clock_lamps = ClockLamps.new(single_minute_lights,
-      five_minute_lights,
-      single_hour_lights,
-      five_hour_lights)
-      return clock_lamps
+      return berlin_clock_lamps
 
   end
 
