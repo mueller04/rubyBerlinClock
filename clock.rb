@@ -14,22 +14,25 @@ class Clock
       five_minute_row = @minute / 5
 
       single_minute_lights = ""
+      five_minute_lights = ""
 
       unless single_minute_row > 4
-        # this gets an error ask Rauh
-        # single_minute_lights = (single_minute_row * "Y").to_s
-
-        single_minute_row.times do
-            single_minute_lights += "Y"
-        end
+        single_minute_lights = ("Y" * single_minute_row)
       end
 
       while single_minute_lights.length < 4
           single_minute_lights += "O"
       end
 
-    five_minute_row = "OOOOOOOOOOO"
-    clock_lamps = ClockLamps.new(single_minute_lights, five_minute_row)
+      five_minute_lights = ("Y" * five_minute_row)
+
+
+    while five_minute_lights.length < 11
+        five_minute_lights += "O"
+    end
+
+
+    clock_lamps = ClockLamps.new(single_minute_lights, five_minute_lights)
     return clock_lamps
 
   end
