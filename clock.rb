@@ -8,10 +8,10 @@ class Clock
 
   def convert_to_berlin_clock(hour, minute, second)
 
-      single_minute_lights_on = minute % 5
-      single_hour_lights_on = hour % 5
-      five_minute_lights_on = minute / 5
-      five_hour_lights_on = hour / 5
+      single_minute_lights_on = get_single_lights_on(minute)
+      single_hour_lights_on = get_single_lights_on(hour)
+      five_minute_lights_on = get_five_lights_on(minute)
+      five_hour_lights_on = get_five_lights_on(hour)
 
       single_minute_lights = get_lights_for_row(YELLOW_LIGHTS, single_minute_lights_on)
       single_hour_lights = get_lights_for_row(RED_LIGHTS, single_hour_lights_on)
@@ -27,6 +27,14 @@ class Clock
   end
 
 private
+
+  def get_single_lights_on(unit)
+      unit % 5
+  end
+
+  def get_five_lights_on(unit)
+      unit / 5
+  end
 
   def get_lights_for_row(light_pattern, number_lights)
       return switch_lights_on(light_pattern, number_lights)+ pad_lights_right(light_pattern, number_lights)
