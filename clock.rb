@@ -1,5 +1,6 @@
 class Clock
 
+  YELLOW_LIGHT = "Y"
   YELLOW_LIGHTS = "YYYY"
   RED_LIGHTS = "RRRR"
   MIXED_LIGHTS = "YYRYYRYYRYY"
@@ -9,7 +10,8 @@ class Clock
       light_row_collection = {single_minute: [YELLOW_LIGHTS, get_single_lights_on(minute)],
         single_hour: [RED_LIGHTS, get_single_lights_on(hour)],
         five_minute: [MIXED_LIGHTS, get_five_lights_on(minute)],
-        five_hour: [RED_LIGHTS, get_five_lights_on(hour)]}
+        five_hour: [RED_LIGHTS, get_five_lights_on(hour)],
+        second: [YELLOW_LIGHT, 1]}
 
       berlin_clock_lamps = {}
       light_row_collection.each do |time_unit, time_values|
