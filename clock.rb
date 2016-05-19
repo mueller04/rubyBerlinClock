@@ -2,8 +2,6 @@ require_relative 'clock_lamps'
 
 class Clock
 
-  FOUR_LIGHT_ROW = 4
-  ELEVEN_LIGHT_ROW = 11
   YELLOW_LIGHTS = "YYYY"
   RED_LIGHTS = "RRRR"
   MIXED_LIGHTS = "YYRYYRYYRYY"
@@ -17,10 +15,10 @@ class Clock
       # p
       # p "foo #{five_hour_row}"
 
-      single_minute_lights = get_lights_for_row(YELLOW_LIGHTS, single_minute_row, FOUR_LIGHT_ROW)
-      single_hour_lights = get_lights_for_row(RED_LIGHTS, single_hour_row, FOUR_LIGHT_ROW)
-      five_minute_lights = get_lights_for_row(MIXED_LIGHTS, five_minute_row, ELEVEN_LIGHT_ROW)
-      five_hour_lights = get_lights_for_row(RED_LIGHTS, five_hour_row, FOUR_LIGHT_ROW)
+      single_minute_lights = get_lights_for_row(YELLOW_LIGHTS, single_minute_row)
+      single_hour_lights = get_lights_for_row(RED_LIGHTS, single_hour_row)
+      five_minute_lights = get_lights_for_row(MIXED_LIGHTS, five_minute_row)
+      five_hour_lights = get_lights_for_row(RED_LIGHTS, five_hour_row)
 
 
       # p "foo2 #{five_hour_row}"
@@ -41,18 +39,18 @@ class Clock
 
 private
 
-  def get_lights_for_row(light_pattern, number_lights, desired_length)
-      return switch_lights_on(light_pattern, number_lights)+ pad_lights_right(desired_length, number_lights)
+  def get_lights_for_row(light_pattern, number_lights)
+      return switch_lights_on(light_pattern, number_lights)+ pad_lights_right(light_pattern, number_lights)
   end
 
   def switch_lights_on(light_pattern, number_lights)
     light_pattern[0,number_lights]
   end
 
-  def pad_lights_right(desired_length, current_length)
+  def pad_lights_right(light_pattern, current_length)
     # p "desired length = #{desired_length} minus #{current_length}"
 
-      length_to_pad = desired_length - current_length
+      length_to_pad = light_pattern.length - current_length
       # p length_to_pad
       "O" * length_to_pad
   end
