@@ -4,4 +4,5 @@ task :test do
   ruby'single_minute_test.rb'
   ruby'five_minute_test.rb'
   ruby'single_hour_test.rb'
+  ruby'five_hour_test.rb'
 end
