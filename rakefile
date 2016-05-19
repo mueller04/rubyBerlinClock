@@ -1,0 +1,5 @@
+require 'rake/testtask'
+task :default => [:test]
+task :test do
+  ruby'clock_test.rb'
+end

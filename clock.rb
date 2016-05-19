@@ -15,18 +15,16 @@ class Clock
       single_hour_row = @hour
 
       single_hour_lights = ""
-      single_minute_lights = ""
       five_minute_lights = ""
 
-      unless single_minute_row > 4
-        single_minute_lights = ("Y" * single_minute_row)
+      single_minute_lights = ("Y" * single_minute_row)
+
+      def pad_lights_right(desired_length, current_length)
+          length_to_pad = desired_length - current_length
+          "O" * length_to_pad
       end
 
-
-      while single_minute_lights.length < 4
-          single_minute_lights += "O"
-      end
-
+      single_minute_lights += pad_lights_right(4, single_minute_row)
 
       for num in 1...five_minute_row + 1
           if num % 3 == 0
@@ -36,15 +34,11 @@ class Clock
           end
       end
 
-    while five_minute_lights.length < 11
-        five_minute_lights += "O"
-    end
+    five_minute_lights += pad_lights_right(11, five_minute_row)
 
     single_hour_lights = ("R" * single_hour_row)
 
-    while single_hour_lights.length < 4
-        single_hour_lights += "O"
-    end
+    single_hour_lights += pad_lights_right(4, single_hour_row)
 
 
     clock_lamps = ClockLamps.new(single_minute_lights, five_minute_lights, single_hour_lights)
