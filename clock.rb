@@ -12,8 +12,9 @@ class Clock
 
       single_minute_row = @minute % 5
       five_minute_row = @minute / 5
+      single_hour_row = @hour
 
-      single_hour_lights = "OOOO"
+      single_hour_lights = ""
       single_minute_lights = ""
       five_minute_lights = ""
 
@@ -39,7 +40,11 @@ class Clock
         five_minute_lights += "O"
     end
 
+    single_hour_lights = ("R" * single_hour_row)
 
+    while single_hour_lights.length < 4
+        single_hour_lights += "O"
+    end
 
 
     clock_lamps = ClockLamps.new(single_minute_lights, five_minute_lights, single_hour_lights)
